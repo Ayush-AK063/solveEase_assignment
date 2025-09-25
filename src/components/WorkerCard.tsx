@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Worker } from '../types/worker';
 
 interface WorkerCardProps {
@@ -10,9 +11,11 @@ const WorkerCard: React.FC<WorkerCardProps> = ({ worker }) => {
     <div className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 p-6">
       <div className="flex items-start space-x-4 mb-4">
         <div className="flex-shrink-0">
-          <img
+          <Image
             src={worker.image}
             alt={worker.name}
+            width={64}
+            height={64}
             className="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
           />
         </div>

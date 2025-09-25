@@ -6,5 +6,5 @@ export interface Worker {
   image: string;
 }
 
-// Legacy interface for backward compatibility
-export interface WorkerType extends Worker {}
+// Legacy type alias for backward compatibility
+export type WorkerType = Worker;

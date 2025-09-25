@@ -7,7 +7,7 @@ const mockWorkers: WorkerType[] = [
   { id: 2, name: 'Bob Johnson', service: 'Electrician', pricePerDay: 600, image: 'image2.jpg' },
   { id: 3, name: 'Charlie Brown', service: 'Plumber', pricePerDay: 400, image: 'image3.jpg' },
   { id: 4, name: 'Diana Prince', service: 'Painter', pricePerDay: 0, image: 'image4.jpg' }, // Should be filtered out
-  { id: null as any, name: 'Invalid Worker', service: 'Welder', pricePerDay: 300, image: 'image5.jpg' }, // Should be filtered out
+  { id: null as unknown, name: 'Invalid Worker', service: 'Welder', pricePerDay: 300, image: 'image5.jpg' }, // Should be filtered out
 ]
 
 describe('useWorkersFilter', () => {
