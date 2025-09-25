@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Worker } from '../types/worker';
 
@@ -7,17 +7,33 @@ interface WorkerCardProps {
 }
 
 const WorkerCard: React.FC<WorkerCardProps> = ({ worker }) => {
+  const [imageError, setImageError] = useState(false);
+
+  // Generate a simple avatar fallback based on the worker's name
+  const getInitials = (name: string) => {
+    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+  };
+
   return (
     <div className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 p-6">
       <div className="flex items-start space-x-4 mb-4">
         <div className="flex-shrink-0">
-          <Image
-            src={worker.image}
-            alt={worker.name}
-            width={64}
-            height={64}
-            className="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
-          />
+          {!imageError ? (
+            <Image
+              src={worker.image}
+              alt={worker.name}
+              width={64}
+              height={64}
+              className="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 border-2 border-gray-100 flex items-center justify-center">
+              <span className="text-white font-semibold text-lg">
+                {getInitials(worker.name)}
+              </span>
+            </div>
+          )}
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-lg font-semibold text-gray-900 truncate">{worker.name}</h3>
