@@ -26,6 +26,8 @@ const WorkerCard: React.FC<WorkerCardProps> = ({ worker }) => {
               height={64}
               className="w-16 h-16 rounded-full object-cover border-2 border-gray-100"
               onError={() => setImageError(true)}
+              unoptimized={true}
+              priority={false}
             />
           ) : (
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 border-2 border-gray-100 flex items-center justify-center">
